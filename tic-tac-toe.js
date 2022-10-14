@@ -38,7 +38,51 @@ window.addEventListener("load", (event) => {
             checkWinner();
 
         }
+
+        sq.onmouseover = (event) => {
+            sq.style.transition = "all .3s ease-in-out"
+            sq.classList.add("hover");
+        }
+
+        sq.onmouseout = (event) => {
+            sq.classList.remove("hover");
+        }
+        let checkWinner = () => {
+
+            for (item = 0; Winapprove.length; item++) {
+
+                Winapprove[item].forEach(element => {
+                    if (squares[element].classList.contains("X")) {
+                        xWinnerVal++;
+                    } else if (squares[element].classList.contains("O")) {
+                        oWinnerVal++;
+                    }
+                });
+                if (xWinnerVal == 3 || oWinnerVal == 3) {
+                    document.querySelector("div#status").classList.add("you-won");
+                    document.querySelector("div#status").innerHTML = `Congratulations! ${sq.innerHTML} is the Winner!`;
+
+                    squares.forEach((square) => {
+                        square.onclick = (event) => {
+                            event.preventDefault();
+                        }
+                    });
+                }
+                xWinnerVal = 0;
+                oWinnerVal = 0;
+                if (item < Winapprove.length - 1) {
+                    continue;
+                }
+                return 0;
+
+            }
+        }
+
+
+    });
+
+    buttton.addEventListener('click', (event) => {
+        squares.forEach((sq) => location.reload());
     })
-});
-  
+})
   
