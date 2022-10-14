@@ -16,6 +16,11 @@ window.addEventListener("load", (event) => {
         sq.innerHTML = " ";
 
     });
+    let xWin = 0;
+    let oWin = 0;
+    let x = true;
+    let o = false;
+    let active;
     squares.forEach((sq) => {
         sq.onclick = (event) => {
             if (x && sq.innerHTML == " ") {
@@ -30,10 +35,10 @@ window.addEventListener("load", (event) => {
                 x = true;
             }
 
+            checkWinner();
+
         }
-    }
-    )
-        
+    })
 });
   
   
